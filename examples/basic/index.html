@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Basic</title>
+  <style>
+    h2 {
+      margin: auto;
+      font-size: 40px;
+    }
+
+    .app {
+      height: 2000px;
+      margin: 0 30px;
+    }
+
+    .header {
+      display: flex;
+      height: 600px;
+      background: #eee;
+    }
+
+    .footer {
+      display: flex;
+      height: 1200px;
+      background: #eee;
+    }
+
+    .sticky-container {
+      /* height: 600px; */
+      overflow: hidden;
+      background: #ccc;
+    }
+
+    .sticky-container p {
+      font-size: 20px;
+      margin: 20px;
+    }
+
+    .sticky {
+      background: #bbb;
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <div class="app"></div>
+  <script type="text/x-template" id="app-template">
+    <div class="app">
+      <div class="header">
+        <h2>Header</h2>
+      </div>
+      <div class="sticky-container" sticky-container>
+        <div :style="{background: '#eee', margin: '20px'}">
+          <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
+          <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
+          <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
+          <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
+          <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
+          <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
+          <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
+          <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
+          <div class="sticky" v-sticky sticky-offset="offset" sticky-side="both">
+            <h2>Sticky</h2>
+          </div>
+          <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
+          <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
+          <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
+          <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
+          <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
+          <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
+          <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
+          <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
+        </div>
+      </div>
+      <div class="footer">
+        <h2>Footer</h2>
+      </div>
+    </div>
+  </script>
+  <script src="https://unpkg.com/vue@2.4.2"></script>
+  <script type="module" src="./app.js"></script>
+  <script nomodule>
+    document.querySelector('.app').innerHTML = `
+    <p>Opps, it seems your browser does not support ES modules, <br/>
+    please follow <a href='https://github.com/paulirish/es-modules-todomvc/blob/master/readme.md'>this</a> to get example worked.</p>
+    `
+  </script>
+</body>
+</html>

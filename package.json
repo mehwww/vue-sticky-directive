@@ -1,0 +1,36 @@
+{
+  "name": "vue-sticky-directive",
+  "version": "0.0.1",
+  "description": "A powerful vue directive make element sticky.",
+  "main": "vue-sticky-directive.js",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElemeFE/vue-infinite-scroll.git"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "vue",
+    "sticky"
+  ],
+  "author": "meh",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "eslint": "^4.4.1",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "rollup": "^0.47.4",
+    "rollup-plugin-babel": "^3.0.2"
+  }
+}
