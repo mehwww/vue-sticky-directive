@@ -2,3 +2,4 @@
 node_modules
 *.log
 vue-sticky-directive.js
+package-lock.json
