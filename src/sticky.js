@@ -9,9 +9,16 @@ const events = [
   'load'
 ]
 
-const batchStyle = (el, style) => {
+const batchStyle = (el, style, className) => {
   for (let k in style) {
     el.style[k] = style[k]
+  }
+  for (let k in className) {
+    if (className[k] && !el.classList.contains(k)) {
+      el.classList.add(k)
+    } else if (!className[k] && el.classList.contains(k)) {
+      el.classList.remove(k)
+    }
   }
 }
 
@@ -112,6 +119,12 @@ class Sticky {
       width: 'auto',
       zIndex: '10'
     }
+    const placeholderClassName = {'vue-sticky-placeholder': true}
+    const elClassName = {
+      'vue-sticky-el': true,
+      'top-sticky': false,
+      'bottom-sticky': false
+    }
 
     if (this.state.isTopSticky) {
       elStyle.position = 'fixed'
@@ -123,6 +136,7 @@ class Sticky {
         elStyle.top = bottomLimit + this.options.topOffset + 'px'
       }
       placeholderStyle.paddingTop = this.state.height + 'px'
+      elClassName['top-sticky'] = true
     } else if (this.state.isBottomSticky) {
       elStyle.position = 'fixed'
       elStyle.bottom = this.options.bottomOffset + 'px'
@@ -133,12 +147,13 @@ class Sticky {
         elStyle.bottom = topLimit + this.options.bottomOffset + 'px'
       }
       placeholderStyle.paddingTop = this.state.height + 'px'
+      elClassName['bottom-sticky'] = true
     } else {
       placeholderStyle.paddingTop = 0
     }
 
-    batchStyle(this.el, elStyle)
-    batchStyle(this.placeholderEl, placeholderStyle)
+    batchStyle(this.el, elStyle, elClassName)
+    batchStyle(this.placeholderEl, placeholderStyle, placeholderClassName)
   }
 
   getContainerEl () {
