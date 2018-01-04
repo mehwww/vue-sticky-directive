@@ -55,7 +55,9 @@ class Sticky {
       events.forEach((event) => {
         const fn = this.update.bind(this)
         this.unsubscribers.push(() => window.removeEventListener(event, fn))
+        this.unsubscribers.push(() => this.containerEl.removeEventListener(event, fn))
         window.addEventListener(event, fn, {passive: true})
+        this.containerEl.addEventListener(event, fn, {passive: true})
       })
     })
   }
