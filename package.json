@@ -1,6 +1,6 @@
 {
   "name": "vue-sticky-directive",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A powerful vue directive make element sticky.",
   "main": "vue-sticky-directive.js",
   "directories": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ElemeFE/vue-infinite-scroll.git"
+    "url": "https://github.com/mehwww/vue-sticky-directive.git"
   },
   "scripts": {
     "build": "rollup -c",
