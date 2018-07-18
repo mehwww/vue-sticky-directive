@@ -41,6 +41,23 @@ Use `v-sticky` directive to enable element postion sticky, and use `sticky-*` at
   * `bottom`_(number)_ - set the bottom breakpoint (default: `0`)
 * `sticky-side`_(string)_ decide which side should be sticky, you can set `top`、`bottom` or `both` (default: `top`)
 
+An expression that evaluates to false set on `v-sticky` can be used to disable stickiness condtionally.
+
+```HTML
+<div sticky-container>
+  <div v-sticky="shouldStick">
+    ...
+  </div>
+</div>
+```
+```JavaScript
+export defaults {
+  data () {
+    shouldStick: false
+  }
+}
+```
+
 # License
 
 MIT
