@@ -43,6 +43,10 @@
       background: #bbb;
       display: flex;
     }
+
+    .toggle-sticky {
+      z-index: 20;
+    }
   </style>
 </head>
 <body>
@@ -62,8 +66,11 @@
           <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
           <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
           <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
-          <div class="sticky" v-sticky sticky-offset="offset" sticky-side="both">
-            <h2>Sticky</h2>
+          <div class="sticky" v-sticky="stickyEnabled" sticky-offset="offset" sticky-side="both">
+            <h2>
+              <span>{{stickyEnabled ? 'Sticky' : 'Not sticky'}}</span>
+              <button class="toggle-sticky" @click="stickyEnabled = !stickyEnabled">toggle sticky</button>
+            </h2>
           </div>
           <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>
           <p>Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. Text follow sticky element. </p>

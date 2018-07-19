@@ -9,7 +9,7 @@ const events = [
   'load'
 ]
 
-const batchStyle = (el, style, className) => {
+const batchStyle = (el, style = {}, className = {}) => {
   for (let k in style) {
     el.style[k] = style[k]
   }
@@ -47,6 +47,9 @@ class Sticky {
   }
 
   doBind () {
+    if (this.unsubscribers.length > 0) {
+      return
+    }
     const {el, vm} = this
     vm.$nextTick(() => {
       this.placeholderEl = document.createElement('div')
@@ -64,6 +67,8 @@ class Sticky {
 
   doUnbind () {
     this.unsubscribers.forEach(fn => fn())
+    this.unsubscribers = []
+    this.resetElement()
   }
 
   update () {
@@ -158,6 +163,13 @@ class Sticky {
     batchStyle(this.placeholderEl, placeholderStyle, placeholderClassName)
   }
 
+  resetElement () {
+    ['position', 'top', 'bottom', 'left', 'width', 'zIndex'].forEach((attr) => {
+      this.el.style.removeProperty(attr)
+    })
+    this.placeholderEl.parentNode.removeChild(this.placeholderEl)
+  }
+
   getContainerEl () {
     let node = this.el.parentNode
     while (node && node.tagName !== 'HTML' && node.tagName !== 'BODY' && node.nodeType === 1) {
@@ -201,13 +213,22 @@ class Sticky {
 
 export default {
   inserted (el, bind, vnode) {
-    if(bind.value !== false) {
+    if (typeof bind.value === 'undefined' || bind.value) {
       el[namespace] = new Sticky(el, vnode.context)
       el[namespace].doBind()
     }
   },
   unbind (el, bind, vnode) {
-    if(bind.value !== false) {
+    el[namespace].doUnbind()
+    el[namespace] = undefined
+  },
+  componentUpdated (el, bind, vnode) {
+    if (typeof bind.value === 'undefined' || bind.value) {
+      if (!el[namespace]) {
+        el[namespace] = new Sticky(el, vnode.context)
+      }
+      el[namespace].doBind()
+    } else {
       el[namespace].doUnbind()
     }
   }
