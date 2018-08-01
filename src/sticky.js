@@ -219,8 +219,10 @@ export default {
     }
   },
   unbind (el, bind, vnode) {
-    el[namespace].doUnbind()
-    el[namespace] = undefined
+    if (el[namespace]) {
+      el[namespace].doUnbind()
+      el[namespace] = undefined
+    }
   },
   componentUpdated (el, bind, vnode) {
     if (typeof bind.value === 'undefined' || bind.value) {
@@ -229,7 +231,9 @@ export default {
       }
       el[namespace].doBind()
     } else {
-      el[namespace].doUnbind()
+      if (el[namespace]) {
+        el[namespace].doUnbind()        
+      }
     }
   }
 }
