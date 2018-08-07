@@ -149,7 +149,7 @@ class Sticky {
       elStyle.bottom = this.options.bottomOffset + 'px'
       elStyle.left = this.state.xOffset + 'px'
       elStyle.width = this.state.width + 'px'
-      const topLimit = this.state.containerElRect = (window.innerHeight - this.state.containerElRect.top) - this.state.height - this.options.bottomOffset - this.options.topOffset
+      const topLimit = (window.innerHeight - this.state.containerElRect.top) - this.state.height - this.options.bottomOffset - this.options.topOffset
       if (topLimit < 0) {
         elStyle.bottom = topLimit + this.options.bottomOffset + 'px'
       }
