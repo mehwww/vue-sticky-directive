@@ -9,5 +9,10 @@ new Vue({
   data: {
     offset: {top: 10, bottom: 30},
     stickyEnabled: true,
+  },
+  methods: {
+    onStick(data) {
+      console.log(data);
+    }
   }
 })

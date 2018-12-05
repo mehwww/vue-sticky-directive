@@ -66,7 +66,7 @@
           <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
           <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
           <p>Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. Text before sticky element. </p>
-          <div class="sticky" v-sticky="stickyEnabled" sticky-offset="offset" sticky-side="both">
+          <div class="sticky" v-sticky="stickyEnabled" sticky-offset="offset" sticky-side="both" on-stick="onStick" stick-z-index="20">
             <h2>
               <span>{{stickyEnabled ? 'Sticky' : 'Not sticky'}}</span>
               <button class="toggle-sticky" @click="stickyEnabled = !stickyEnabled">toggle sticky</button>
