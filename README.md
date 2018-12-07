@@ -39,7 +39,18 @@ Use `v-sticky` directive to enable element postion sticky, and use `sticky-*` at
 * `sticky-offset`
   * `top`_(number)_ - set the top breakpoint (default: `0`)
   * `bottom`_(number)_ - set the bottom breakpoint (default: `0`)
-* `sticky-side`_(string)_ decide which side should be sticky, you can set `top`、`bottom` or `both` (default: `top`)
+* `sticky-side`_(string)_ - decide which side should be sticky, you can set `top`、`bottom` or `both` (default: `top`)
+* `stick-z-index` _(number)_ - to set the z-index of element to stick
+* `on-stick` _(function)_ - callback when sticky and release, receiveing 1 argument with object indicating the state, like: 
+
+```javascript
+// The element is sticked on top
+{
+  bottom: false,
+  top: true,
+  sticked: true
+}
+```
 
 An expression that evaluates to false set on `v-sticky` can be used to disable stickiness condtionally.
 

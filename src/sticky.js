@@ -30,19 +30,30 @@ class Sticky {
     this.isPending = false
     this.state = {
       isTopSticky: null,
+      isBottomSticky: null,
       height: null,
       width: null,
       xOffset: null
     }
 
+    this.lastState = {
+      top: null,
+      bottom: null,
+      sticked: false
+    }
+
     const offset = this.getAttribute('sticky-offset') || {}
     const side = this.getAttribute('sticky-side') || 'top'
+    const zIndex = this.getAttribute('stick-z-index') || '10'
+    const onStick = this.getAttribute('on-stick') || null
 
     this.options = {
       topOffset: Number(offset.top) || 0,
       bottomOffset: Number(offset.bottom) || 0,
       shouldTopSticky: side === 'top' || side === 'both',
-      shouldBottomSticky: side === 'bottom' || side === 'both'
+      shouldBottomSticky: side === 'bottom' || side === 'both',
+      zIndex: zIndex,
+      onStick: onStick
     }
   }
 
@@ -116,6 +127,23 @@ class Sticky {
     this.state.isBottomSticky = this.isBottomSticky()
   }
 
+  fireEvents() {
+    if(typeof this.options.onStick === 'function' && 
+      (
+        this.lastState.top !== this.state.isTopSticky || 
+        this.lastState.bottom !== this.state.isBottomSticky || 
+        this.lastState.sticked !== (this.state.isTopSticky || this.state.isBottomSticky)
+      )
+    ) {
+      this.lastState = {
+        top: this.state.isTopSticky,
+        bottom: this.state.isBottomSticky,
+        sticked: this.state.isBottomSticky || this.state.isTopSticky
+      }
+      this.options.onStick(this.lastState);
+    }
+  }
+
   updateElements () {
     const placeholderStyle = {paddingTop: 0}
     const elStyle = {
@@ -124,7 +152,7 @@ class Sticky {
       bottom: 'auto',
       left: 'auto',
       width: 'auto',
-      zIndex: '10'
+      zIndex: this.options.zIndex
     }
     const placeholderClassName = {'vue-sticky-placeholder': true}
     const elClassName = {
@@ -161,6 +189,8 @@ class Sticky {
 
     batchStyle(this.el, elStyle, elClassName)
     batchStyle(this.placeholderEl, placeholderStyle, placeholderClassName)
+
+    this.fireEvents();    
   }
 
   resetElement () {
