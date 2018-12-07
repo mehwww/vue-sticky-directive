@@ -44,7 +44,7 @@ class Sticky {
 
     const offset = this.getAttribute('sticky-offset') || {}
     const side = this.getAttribute('sticky-side') || 'top'
-    const zIndex = this.getAttribute('stick-z-index') || '10'
+    const zIndex = this.getAttribute('sticky-z-index') || '10'
     const onStick = this.getAttribute('on-stick') || null
 
     this.options = {
@@ -127,11 +127,11 @@ class Sticky {
     this.state.isBottomSticky = this.isBottomSticky()
   }
 
-  fireEvents() {
-    if(typeof this.options.onStick === 'function' && 
+  fireEvents () {
+    if (typeof this.options.onStick === 'function' &&
       (
-        this.lastState.top !== this.state.isTopSticky || 
-        this.lastState.bottom !== this.state.isBottomSticky || 
+        this.lastState.top !== this.state.isTopSticky ||
+        this.lastState.bottom !== this.state.isBottomSticky ||
         this.lastState.sticked !== (this.state.isTopSticky || this.state.isBottomSticky)
       )
     ) {
@@ -140,7 +140,7 @@ class Sticky {
         bottom: this.state.isBottomSticky,
         sticked: this.state.isBottomSticky || this.state.isTopSticky
       }
-      this.options.onStick(this.lastState);
+      this.options.onStick(this.lastState)
     }
   }
 
@@ -190,7 +190,7 @@ class Sticky {
     batchStyle(this.el, elStyle, elClassName)
     batchStyle(this.placeholderEl, placeholderStyle, placeholderClassName)
 
-    this.fireEvents();    
+    this.fireEvents()
   }
 
   resetElement () {
@@ -262,7 +262,7 @@ export default {
       el[namespace].doBind()
     } else {
       if (el[namespace]) {
-        el[namespace].doUnbind()        
+        el[namespace].doUnbind()
       }
     }
   }
