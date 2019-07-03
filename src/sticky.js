@@ -253,11 +253,19 @@ class Sticky {
 
   getAttribute(name) {
     const expr = this.el.getAttribute(name);
+    let result = undefined;
     if (expr) {
-      return this.vm[expr] || expr;
-    } else {
-      return undefined;
+      if (this.vm[expr]) {
+        result = this.vm[expr];
+      } else {
+        try {
+          result = eval(`(${expr})`);
+        } catch (error) {
+          result = expr;
+        }
+      }
     }
+    return result;
   }
 }
 

@@ -36,7 +36,7 @@ Use `v-sticky` directive to enable element postion sticky, and use `sticky-*` at
 ```
 
 # Options
-* `sticky-offset`
+* `sticky-offset` - set sticky offset, it support a vm variable name or a js expression like `{top: 10, bottom: 20}`
   * `top`_(number)_ - set the top breakpoint (default: `0`)
   * `bottom`_(number)_ - set the bottom breakpoint (default: `0`)
 * `sticky-side`_(string)_ - decide which side should be sticky, you can set `top`、`bottom` or `both` (default: `top`)

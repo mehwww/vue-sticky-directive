@@ -7,7 +7,6 @@ new Vue({
   el: document.querySelector('.app'),
   template: '#app-template',
   data: {
-    offset: { top: 10, bottom: 30 },
     stickyEnabled: true,
   },
   methods: {
