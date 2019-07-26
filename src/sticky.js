@@ -209,6 +209,7 @@ class Sticky {
     ['position', 'top', 'bottom', 'left', 'width', 'zIndex'].forEach(attr => {
       this.el.style.removeProperty(attr);
     });
+    this.el.classList.remove('bottom-sticky', 'top-sticky');
     const { parentNode } = this.placeholderEl;
     if (parentNode) {
       parentNode.removeChild(this.placeholderEl);
