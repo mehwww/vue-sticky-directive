@@ -120,7 +120,7 @@ class Sticky {
 
   recomputeState() {
     this.state = Object.assign({}, this.state, {
-      height: this.getHeight(),
+      height: this.lastState.sticked ? this.state.height : this.getHeight(),
       width: this.getWidth(),
       xOffset: this.getXOffset(),
       placeholderElRect: this.getPlaceholderElRect(),
