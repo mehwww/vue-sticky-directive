@@ -23,9 +23,10 @@ const batchStyle = (el, style = {}, className = {}) => {
 };
 
 class Sticky {
-  constructor(el, vm) {
+  constructor(el, vm, vnode) {
     this.el = el;
     this.vm = vm;
+    this.vnode = vnode;
     this.unsubscribers = [];
     this.isPending = false;
     this.state = {
@@ -132,7 +133,6 @@ class Sticky {
 
   fireEvents() {
     if (
-      typeof this.options.onStick === 'function' &&
       (this.lastState.top !== this.state.isTopSticky ||
         this.lastState.bottom !== this.state.isBottomSticky ||
         this.lastState.sticked !==
@@ -143,7 +143,8 @@ class Sticky {
         bottom: this.state.isBottomSticky,
         sticked: this.state.isBottomSticky || this.state.isTopSticky,
       };
-      this.options.onStick(this.lastState);
+      if (typeof this.options.onStick === 'function') this.options.onStick(this.lastState);
+      if (this.vnode.data && this.vnode.data.on && this.vnode.data.on.stick) this.vnode.data.on.stick(this.lastState)
     }
   }
 
@@ -273,7 +274,7 @@ class Sticky {
 export default {
   inserted(el, bind, vnode) {
     if (typeof bind.value === 'undefined' || bind.value) {
-      el[namespace] = new Sticky(el, vnode.context);
+      el[namespace] = new Sticky(el, vnode.context, vnode);
       el[namespace].doBind();
     }
   },
