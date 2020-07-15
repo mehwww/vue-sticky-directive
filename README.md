@@ -43,6 +43,9 @@ Use `v-sticky` directive to enable element postion sticky, and use `sticky-*` at
 * `sticky-z-index` _(number)_ - to set the z-index of element to stick
 * `on-stick` _(function)_ - callback when sticky and release, receiveing 1 argument with object indicating the state, like:
 
+# Events
+* `@stick` - Same as `on-stick`-callback, but as an event
+
 ```javascript
 // The element is sticked on top
 {
