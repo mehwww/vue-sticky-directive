@@ -43,11 +43,8 @@ Use `v-sticky` directive to enable element postion sticky, and use `sticky-*` at
 * `sticky-z-index` _(number)_ - to set the z-index of element to stick
 * `on-stick` _(function)_ - callback when sticky and release, receiveing 1 argument with object indicating the state, like:
 
-# Events
-* `@stick` - Same as `on-stick`-callback, but as an event
-
 ```javascript
-// The element is sticked on top
+// The element is stuck on top
 {
   bottom: false,
   top: true,
@@ -55,7 +52,10 @@ Use `v-sticky` directive to enable element postion sticky, and use `sticky-*` at
 }
 ```
 
-An expression that evaluates to false set on `v-sticky` can be used to disable stickiness condtionally.
+# Events
+* `@stick` - Same as `on-stick`-callback, but as an event
+
+An expression that evaluates to false set on `v-sticky` can be used to disable stickiness conditionally.
 
 ```HTML
 <div sticky-container>
