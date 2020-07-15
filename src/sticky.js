@@ -143,7 +143,7 @@ class Sticky {
         sticked: this.state.isBottomSticky || this.state.isTopSticky,
       };
       if (typeof this.options.onStick === 'function') this.options.onStick(this.lastState);
-      this.vm.$emit(this.lastState)
+      this.vm.$emit('stick', this.lastState)
     }
   }
 
