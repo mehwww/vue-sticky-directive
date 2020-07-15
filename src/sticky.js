@@ -132,7 +132,6 @@ class Sticky {
 
   fireEvents() {
     if (
-      typeof this.options.onStick === 'function' &&
       (this.lastState.top !== this.state.isTopSticky ||
         this.lastState.bottom !== this.state.isBottomSticky ||
         this.lastState.sticked !==
@@ -143,7 +142,8 @@ class Sticky {
         bottom: this.state.isBottomSticky,
         sticked: this.state.isBottomSticky || this.state.isTopSticky,
       };
-      this.options.onStick(this.lastState);
+      if (typeof this.options.onStick === 'function') this.options.onStick(this.lastState);
+      this.vm.$emit(this.lastState)
     }
   }
 
