@@ -275,6 +275,7 @@ export default {
     if (typeof bind.value === 'undefined' || bind.value) {
       el[namespace] = new Sticky(el, vnode.context);
       el[namespace].doBind();
+      el[namespace].update();
     }
   },
   unbind(el, bind, vnode) {
