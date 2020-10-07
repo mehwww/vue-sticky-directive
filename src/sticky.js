@@ -74,6 +74,7 @@ class Sticky {
         );
         window.addEventListener(event, fn, { passive: true });
         this.containerEl.addEventListener(event, fn, { passive: true });
+        new ResizeObserver(fn).observe(this.containerEl);
       });
     });
   }
