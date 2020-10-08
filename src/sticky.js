@@ -1,3 +1,5 @@
+import ResizeObserver from 'resize-observer-polyfill';
+
 const namespace = '@@vue-sticky-directive';
 const events = [
   'resize',
