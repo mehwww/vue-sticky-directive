@@ -1,3 +1,5 @@
+import ResizeObserver from 'resize-observer-polyfill';
+
 const namespace = '@@vue-sticky-directive';
 const events = [
   'resize',
@@ -74,6 +76,7 @@ class Sticky {
         );
         window.addEventListener(event, fn, { passive: true });
         this.containerEl.addEventListener(event, fn, { passive: true });
+        new ResizeObserver(fn).observe(this.containerEl);
       });
     });
   }
@@ -275,6 +278,7 @@ export default {
     if (typeof bind.value === 'undefined' || bind.value) {
       el[namespace] = new Sticky(el, vnode.context);
       el[namespace].doBind();
+      el[namespace].update();
     }
   },
   unbind(el, bind, vnode) {

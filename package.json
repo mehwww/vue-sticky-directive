@@ -22,6 +22,9 @@
   ],
   "author": "meh",
   "license": "MIT",
+  "dependencies": {
+    "resize-observer-polyfill": "1.5.1"
+  },
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
