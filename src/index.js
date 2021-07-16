@@ -1,13 +1,9 @@
-import Sticky from './sticky';
+import Sticky from './sticky'
 
-const install = function(Vue) {
-  Vue.directive('Sticky', Sticky);
-};
-
-if (window.Vue) {
-  Vue.use(install);
+const install = function (app) {
+  app.directive('Sticky', Sticky)
 }
 
-Sticky.install = install;
+Sticky.install = install
 
-export default Sticky;
+export default Sticky
